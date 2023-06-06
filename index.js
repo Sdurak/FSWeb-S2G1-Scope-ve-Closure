@@ -20,6 +20,9 @@ function ilkiniDon(stringArray, callback) {
 }
 console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin+metin}));
 
+
+
+
 // Başlangıç Challenge'ı Sonu
 
 
@@ -30,10 +33,13 @@ console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin
   Aşağıdaki skor1 ve skor2 kodlarını inceleyiniz ve aşağıdaki soruları altına not alarak cevaplayın
   
   1. skor1 ve skor2 arasındaki fark nedir?
+  // skor1 in sonucu 0'dır (çünkü ++ sağında). Aynı şekilde skor2 de 0'dır.
   
   2. Hangisi bir closure kullanmaktadır? Nasıl tarif edebilirsin? (yarınki derste öğreneceksin :) )
-  
+  // skor1'dir. Çünkü parent scope u vardır.
   3. Hangi durumda skor1 tercih edilebilir? Hangi durumda skor2 daha mantıklıdır?
+  // Variableları değiştirmek istediğimizde, bu da closurede rahatca yapılabileceği için skor1 tercih edileblir. Herhangi bir değişiklik
+  // olmayacaksa skor2 olabilir.
 */
 
 // skor1 kodları
@@ -64,10 +70,12 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
 
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+function takimSkoru(ceyrekSonucu){
+  return ceyrekSonucu
+        
 }
 
+console.log(Math.round(Math.random()*15));
 
 
 
@@ -86,12 +94,21 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+function macSonucu(_takimSkoru, 4){
+  let home=0;
+  let away=0;
+  for(let i=0; i<4; i++)
+  {
+    home+=callback();
+    away+=callback();
+  }
+  return {"EvSahibi":home,
+          "KonukTakim":away
+};
 }
 
 
-
+console.log(macSonucu(_takimSkoru, 4));
 
 
 
@@ -109,10 +126,16 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
   */
 
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
-
+function periyotSkoru(callBack){
+  let skor = {
+    "EvSahibi": callBack(),
+    "KonukTakim": callBack()
+  }
+  return skor;
 }
+
+console.log(periyotSkoru(takimSkoru));
+
 
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
